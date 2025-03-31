@@ -1,0 +1,22 @@
+#Создать директорию для проекта и перейти в нее.
+#Создать файл index.html с содержимым.
+#Создать файл Dockerfile с содержимым.
+#Собрать image.
+#Запустить контейнер.
+#Перейти в браузере по адресу http://localhost:8080 и увидеть сообщение из вашего index.html.\
+
+FROM nginx:latest
+
+LABEL EMAIL="email"
+LABEL VERSION="1.0"
+LABEL DESCRIPTION="description"
+
+WORKDIR /usr/share/nginx/html
+
+COPY index.html .
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx"]
+
+CMD ["-g", "daemon off;"]
